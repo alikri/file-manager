@@ -9,6 +9,6 @@ export const executeCommand = async (commandObj) => {
       console.log('Operation failed:', error.message);
     }
   } else {
-    console.log('Unknown command or invalid input');
+    console.log('Invalid input');
   }
 };

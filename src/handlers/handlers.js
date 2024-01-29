@@ -19,7 +19,7 @@ export const handlers = {
     }
   },
   cat: async (payload) => {
-    console.log(`Displaying content of file: ${payload[0]}`);
+    console.log(`Displaying content of the file: ${payload[0]}`);
   },
   add: async (payload) => {
     console.log(`Adding a new file: ${payload[0]}`);

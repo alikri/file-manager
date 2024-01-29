@@ -9,11 +9,11 @@ export const changeDirectory = async (newDir) => {
   const relativeToRoot = path.relative(os.homedir(), newAbsolutePath);
 
   const dirStats = await fs.stat(newAbsolutePath).catch(() => {
-    throw new Error(`The specified directory does not exist: ${newDir}`);
+    throw new Error(`Invalid input: specified directory does not exist: ${newDir}`);
   });
 
   if (!dirStats.isDirectory()) {
-    throw new Error(`${newDir} is not a directory`);
+    throw new Error(`Invalid input: ${newDir} is not a directory`);
   }
 
   if (

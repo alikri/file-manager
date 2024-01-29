@@ -4,7 +4,7 @@ import { getCurrentDirectory } from '../config.js';
 export const listDirectoryContent = async () => {
   try {
     const currentDirectory = getCurrentDirectory();
-    console.log('Listing contents of the directory:', currentDirectory);
+    console.log('Content of the directory:', currentDirectory);
 
     const directoryContent = await fs.readdir(currentDirectory, { withFileTypes: true });
 

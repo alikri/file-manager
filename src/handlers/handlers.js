@@ -1,13 +1,14 @@
 import os from 'os';
 import { changeDirectory } from '../commands/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
+import { listDirectoryContent } from '../commands/ls.js';
 
 export const handlers = {
   up: async () => {
     console.log('Moving up one directory...');
   },
   ls: async () => {
-    console.log('Listing contents of the current directory...');
+    await listDirectoryContent();
   },
   cd: async (payload) => {
     try {

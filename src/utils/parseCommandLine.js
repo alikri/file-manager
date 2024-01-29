@@ -23,16 +23,10 @@ export const parseCommandLine = (input) => {
     '--architecture',
   ];
 
-  let result = {
-    command: '',
-    payload: [],
-  };
+  let parts = input.trim().split(/\s+/); 
 
-  let parts = input.split(' ');
-
-  if (parts.length === 0 || input.trim() === '') {
-    result.error = true;
-    return result;
+  if (parts.length === 0) {
+    throw error;
   }
 
   let command = parts[0];
@@ -44,18 +38,26 @@ export const parseCommandLine = (input) => {
     validOsCommands.includes(payload[0])
   ) {
     command += ' ' + payload[0];
-    payload = payload.slice(1); 
+    payload = payload.slice(1);
   }
 
-  if (
-    !validCommands.includes(command) &&
-    !validCommandsWithPayload.includes(command.split(' ')[0])
-  ) {
-    throw new Error('Invalid input or command not implemented');
+  if (validCommands.includes(command)) {
+    if (payload.length > 0) {
+      throw error;
+    }
+  } else if (validCommandsWithPayload.includes(command.split(' ')[0])) {
+    if (
+      payload.length === 0 ||
+      (command === 'os' && !validOsCommands.includes(payload[0]))
+    ) {
+      throw error;
+    }
+  } else {
+    throw error;
   }
 
-  result.command = command;
-  result.payload = payload;
-
-  return result;
-}
+  return {
+    command,
+    payload,
+  };
+};

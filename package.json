@@ -1,0 +1,21 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fileManager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node fileManager.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alikri/file-manager.git"
+  },
+  "author": "Alikri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alikri/file-manager/issues"
+  },
+  "homepage": "https://github.com/alikri/file-manager#readme"
+}

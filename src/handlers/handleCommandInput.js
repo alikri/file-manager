@@ -6,6 +6,6 @@ export const handleCommandInput = async (input) => {
     let commandObj = parseCommandLine(input);
     await executeCommand(commandObj);
   } catch (err) {
-    console.log('Operation failed');
+    console.log('Invalid input');
   }
 };

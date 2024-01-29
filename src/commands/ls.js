@@ -1,6 +1,5 @@
 import fs from 'fs/promises';
-import path from 'path';
-import { getCurrentDirectory } from '../../config.js';
+import { getCurrentDirectory } from '../config.js';
 
 export const listDirectoryContent = async () => {
   try {

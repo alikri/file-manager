@@ -1,8 +1,7 @@
 import readline from 'readline';
 import { parseUsername } from './src/utils/parseUsername.js';
-import { getCurrentDirectory } from './config.js';
-import { parseCommandLine } from './src/utils/parseCommandLine.js';
-import { executeCommand } from './src/handlers/executeCommand.js';
+import { getCurrentDirectory } from './src/config.js';
+import { handleCommandInput } from './src/handlers/handleCommandInput.js';
 
 const readLine = readline.createInterface({
   input: process.stdin,
@@ -14,17 +13,6 @@ const username = parseUsername();
 
 const displayCurrentDirectory = () => {
   console.log(`You are currently in ${getCurrentDirectory()}`);
-}
-
-
-const handleCommandInput = async (input) => {
-  try {
-    let commandObj = parseCommandLine(input);
-    await executeCommand(commandObj);
-    
-  } catch (err) {
-    console.log('Operation failed');
-  }
 }
 
 

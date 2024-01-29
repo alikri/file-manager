@@ -1,8 +1,8 @@
 import readline from 'readline';
-import os from 'os';
 import { parseUsername } from './src/utils/parseUsername.js';
 import { getCurrentDirectory } from './config.js';
 import { parseCommandLine } from './src/utils/parseCommandLine.js';
+import { executeCommand } from './src/handlers/executeCommand.js';
 
 const readLine = readline.createInterface({
   input: process.stdin,
@@ -20,11 +20,8 @@ const displayCurrentDirectory = () => {
 const handleCommandInput = async (input) => {
   try {
     let commandObj = parseCommandLine(input);
-    if (!commandObj.error) {
-      console.log(commandObj);
-    } else {
-      throw new Error('Invalid input or command not implemented');
-    }
+    await executeCommand(commandObj);
+    
   } catch (err) {
     console.log('Operation failed');
   }

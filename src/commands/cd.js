@@ -1,30 +1,28 @@
-
 import fs from 'fs/promises';
 import os from 'os';
 import path from 'path';
-import { setCurrentDirectory, getCurrentDirectory } from '../../config';
+import { setCurrentDirectory, getCurrentDirectory } from '../../config.js';
+
 
 export const changeDirectory = async (newDir) => {
   const newAbsolutePath = path.resolve(getCurrentDirectory(), newDir);
   const relativeToRoot = path.relative(os.homedir(), newAbsolutePath);
 
-  try {
-    const dirStats = await fs.stat(newAbsolutePath);
-    if (!dirStats.isDirectory()) {
-      console.log(`${newDir} is not a directory`);
-      return;
-    }
+  const dirStats = await fs.stat(newAbsolutePath).catch(() => {
+    throw new Error(`The specified directory does not exist: ${newDir}`);
+  });
 
-    if (
-      relativeToRoot.startsWith('..') ||
-      (path.isAbsolute(newDir) && !newAbsolutePath.startsWith(os.homedir()))
-    ) {
-      console.log('Cannot navigate above the root directory');
-    } else {
-      setCurrentDirectory(newAbsolutePath);
-      console.log(`Directory changed to ${newAbsolutePath}`);
-    }
-  } catch {
-    console.log(`The specified directory does not exist: ${newDir}`);
+  if (!dirStats.isDirectory()) {
+    throw new Error(`${newDir} is not a directory`);
   }
+
+  if (
+    relativeToRoot.startsWith('..') ||
+    (path.isAbsolute(newDir) && !newAbsolutePath.startsWith(os.homedir()))
+  ) {
+    throw new Error('Cannot navigate above the root directory');
+  }
+
+  setCurrentDirectory(newAbsolutePath);
+  console.log(`Directory changed to ${newAbsolutePath}`);
 };

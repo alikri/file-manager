@@ -26,7 +26,6 @@ export const parseCommandLine = (input) => {
   let result = {
     command: '',
     payload: [],
-    error: false,
   };
 
   let parts = input.split(' ');
@@ -52,8 +51,7 @@ export const parseCommandLine = (input) => {
     !validCommands.includes(command) &&
     !validCommandsWithPayload.includes(command.split(' ')[0])
   ) {
-    result.error = true;
-    return result;
+    throw new Error('Invalid input or command not implemented');
   }
 
   result.command = command;

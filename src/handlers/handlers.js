@@ -3,8 +3,8 @@ import { changeDirectory } from '../commands/nwd/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
 import { listDirectoryContent } from '../commands/nwd/ls.js';
 import { navigateUp } from '../commands/nwd/up.js';
-import { addFile } from '../commands/nwd/add.js';
-import { print } from '../commands/nwd/cat.js';
+import { addFile } from '../commands/basicOperations/add.js';
+import { print } from '../commands/basicOperations/cat.js';
 
 export const handlers = {
   up: async () => {

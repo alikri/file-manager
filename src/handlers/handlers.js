@@ -2,10 +2,11 @@ import os from 'os';
 import { changeDirectory } from '../commands/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
 import { listDirectoryContent } from '../commands/ls.js';
+import { navigateUp } from '../commands/up.js';
 
 export const handlers = {
   up: async () => {
-    console.log('Moving up one directory...');
+    await navigateUp();
   },
   ls: async () => {
     await listDirectoryContent();

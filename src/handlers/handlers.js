@@ -3,7 +3,7 @@ import { changeDirectory } from '../commands/nwd/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
 import { listDirectoryContent } from '../commands/nwd/ls.js';
 import { navigateUp } from '../commands/nwd/up.js';
-import { addFile } from '../commands/basicOperations/add.js';
+import { createFile } from '../commands/basicOperations/add.js';
 import { printFileContent } from '../commands/basicOperations/cat.js';
 
 export const handlers = {
@@ -32,7 +32,7 @@ export const handlers = {
   add: async (payload) => {
     try {
       const fileName = validatePayload(payload);
-      await addFile(fileName);
+      await createFile(fileName);
     } catch (err) {
       console.log(`Operation failed! Error in handler: ${err.message}`)
     }

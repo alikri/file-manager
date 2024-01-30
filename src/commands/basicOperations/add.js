@@ -2,7 +2,7 @@ import { writeFile, access } from 'node:fs/promises';
 import path from 'path';
 import { getCurrentDirectory } from '../../config.js';
 
-export const addFile = async (fileName) => {
+export const createFile = async (fileName) => {
   const currentDirectory = getCurrentDirectory();
   const filePath = path.join(currentDirectory, fileName);
   try {

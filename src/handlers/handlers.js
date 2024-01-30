@@ -60,14 +60,21 @@ export const handlers = {
     switch (payload[0]) {
       case '--EOL':
         output = `--EOL`;
+        break;
       case '--cpus':
         output = '--cpus';
+        break;
       case '--homedir':
         output = '--homedir';
+        break;
       case '--username':
         output = '--username';
+        break;
       case '--architecture':
         output = '--architecture';
+        break;
+      default:
+        throw new Error('Invalid input: invalid flag')
     }
 
     console.log(output);

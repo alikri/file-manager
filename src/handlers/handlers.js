@@ -4,6 +4,7 @@ import { validatePayload } from '../utils/validatePayload.js';
 import { listDirectoryContent } from '../commands/ls.js';
 import { navigateUp } from '../commands/up.js';
 import { addFile } from '../commands/add.js';
+import { print } from '../commands/cat.js';
 
 export const handlers = {
   up: async () => {
@@ -17,18 +18,23 @@ export const handlers = {
       const directory = validatePayload(payload); 
       await changeDirectory(directory);
     } catch (err) {
-      console.log(`Opertion failed: ${err.message}`);
+      console.log(`Operation failed! Error in handler: ${err.message}`);
     }
   },
   cat: async (payload) => {
-    console.log(`Displaying content of the file: ${payload[0]}`);
+    try {
+      const fileName = validatePayload(payload);
+      await print(fileName);
+    } catch (err) {
+      console.log(`Operation failed! Error in handler: ${err.message}`);
+    }
   },
   add: async (payload) => {
     try {
       const fileName = validatePayload(payload);
       await addFile(fileName);
     } catch (err) {
-      console.log(`Opertion failed: ${err.message}`)
+      console.log(`Operation failed! Error in handler: ${err.message}`)
     }
   
   },

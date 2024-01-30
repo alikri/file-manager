@@ -4,7 +4,7 @@ import { validatePayload } from '../utils/validatePayload.js';
 import { listDirectoryContent } from '../commands/nwd/ls.js';
 import { navigateUp } from '../commands/nwd/up.js';
 import { addFile } from '../commands/basicOperations/add.js';
-import { print } from '../commands/basicOperations/cat.js';
+import { printFileContent } from '../commands/basicOperations/cat.js';
 
 export const handlers = {
   up: async () => {
@@ -24,7 +24,7 @@ export const handlers = {
   cat: async (payload) => {
     try {
       const fileName = validatePayload(payload);
-      await print(fileName);
+      await printFileContent(fileName);
     } catch (err) {
       console.log(`Operation failed! Error in handler: ${err.message}`);
     }

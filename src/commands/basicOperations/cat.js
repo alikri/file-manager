@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { getCurrentDirectory } from '../../config.js';
 
-export const print = async (fileName) => {
+export const printFileContent = async (fileName) => {
   const filePath = join(getCurrentDirectory(), fileName);
   await new Promise((resolve, reject) => {
     const readableStream = createReadStream(filePath, { encoding: 'utf8' });

@@ -3,6 +3,7 @@ import { changeDirectory } from '../commands/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
 import { listDirectoryContent } from '../commands/ls.js';
 import { navigateUp } from '../commands/up.js';
+import { addFile } from '../commands/add.js';
 
 export const handlers = {
   up: async () => {
@@ -15,15 +16,21 @@ export const handlers = {
     try {
       const directory = validatePayload(payload); 
       await changeDirectory(directory);
-    } catch (error) {
-      console.log(error.message);
+    } catch (err) {
+      console.log(`Opertion failed: ${err.message}`);
     }
   },
   cat: async (payload) => {
     console.log(`Displaying content of the file: ${payload[0]}`);
   },
   add: async (payload) => {
-    console.log(`Adding a new file: ${payload[0]}`);
+    try {
+      const fileName = validatePayload(payload);
+      await addFile(fileName);
+    } catch (err) {
+      console.log(`Opertion failed: ${err.message}`)
+    }
+  
   },
   rn: async (payload) => {
     console.log(`Renaming file from ${payload[0]} to ${payload[1]}`);

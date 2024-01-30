@@ -1,4 +1,3 @@
-import os from 'os';
 import { changeDirectory } from '../commands/nwd/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
 import { listDirectoryContent } from '../commands/nwd/ls.js';
@@ -14,16 +13,13 @@ export const handlers = {
     await listDirectoryContent();
   },
   cd: async (payload) => {
-    try {
-      const directory = validatePayload(payload); 
-      await changeDirectory(directory);
-    } catch (err) {
-      console.log(`Operation failed! Error in handler: ${err.message}`);
-    }
+    validatePayload(payload);
+    const directory = payload[0];
+    await changeDirectory(directory);
   },
   cat: async (payload) => {
     try {
-      const fileName = validatePayload(payload);
+      const fileName = payload[0];
       await printFileContent(fileName);
     } catch (err) {
       console.log(`Operation failed! Error in handler: ${err.message}`);
@@ -31,7 +27,7 @@ export const handlers = {
   },
   add: async (payload) => {
     try {
-      const fileName = validatePayload(payload);
+      const fileName = payload[0];
       await createFile(fileName);
     } catch (err) {
       console.log(`Operation failed! Error in handler: ${err.message}`)
@@ -59,22 +55,21 @@ export const handlers = {
   decompress: async (payload) => {
     console.log(`Decompressing file from ${payload[0]} to ${payload[1]}`);
   },
-  'os --EOL': () => {
-    console.log(
-      `End-of-line marker for the current OS: ${JSON.stringify(os.EOL)}`
-    );
-  },
-  'os --cpus': () => {
-    console.log('CPU details:');
-    console.log(os.cpus());
-  },
-  'os --homedir': () => {
-    console.log(`Home directory of the current user: ${os.homedir()}`);
-  },
-  'os --username': () => {
-    console.log(`Username of the current user: ${os.userInfo().username}`);
-  },
-  'os --architecture': () => {
-    console.log(`Architecture of the current OS: ${os.arch()}`);
-  },
+  os: async (payload) => {
+    let output;
+    switch (payload[0]) {
+      case '--EOL':
+        output = `--EOL`;
+      case '--cpus':
+        output = '--cpus';
+      case '--homedir':
+        output = '--homedir';
+      case '--username':
+        output = '--username';
+      case '--architecture':
+        output = '--architecture';
+    }
+
+    console.log(output);
+  }
 };

@@ -3,12 +3,8 @@ import { handlers } from './handlers.js';
 export const executeCommand = async (commandObj) => {
   const handler = handlers[commandObj.command];
   if (handler) {
-    try {
-      await handler(commandObj.payload);
-    } catch (error) {
-      console.log('Operation failed:', error.message);
-    }
+    await handler(commandObj.payload);
   } else {
-    console.log('Invalid input');
+    console.log('No such command');
   }
 };

@@ -1,10 +1,10 @@
 import os from 'os';
-import { changeDirectory } from '../commands/cd.js';
+import { changeDirectory } from '../commands/nwd/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
-import { listDirectoryContent } from '../commands/ls.js';
-import { navigateUp } from '../commands/up.js';
-import { addFile } from '../commands/add.js';
-import { print } from '../commands/cat.js';
+import { listDirectoryContent } from '../commands/nwd/ls.js';
+import { navigateUp } from '../commands/nwd/up.js';
+import { addFile } from '../commands/nwd/add.js';
+import { print } from '../commands/nwd/cat.js';
 
 export const handlers = {
   up: async () => {

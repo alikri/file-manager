@@ -1,6 +1,6 @@
-import { changeDirectory } from '../commands/nwd/cd.js';
-import { listDirectoryContent } from '../commands/nwd/ls.js';
-import { navigateUp } from '../commands/nwd/up.js';
+import { changeDirectory } from '../commands/nwdCommands/cd.js';
+import { listDirectoryContent } from '../commands/nwdCommands/ls.js';
+import { navigateUp } from '../commands/nwdCommands/up.js';
 import { createFile } from '../commands/basicCommands/add.js';
 import { printFileContent } from '../commands/basicCommands/cat.js';
 import { renameFile } from '../commands/basicCommands/rn.js';

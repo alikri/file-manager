@@ -12,7 +12,7 @@ import { printCPUs } from '../commands/osCommands/os--cpus.js';
 import { printDirectory } from '../commands/osCommands/os --homedir.js';
 import { printSystemUsername } from '../commands/osCommands/os--username.js';
 import { printCPUArchitecture } from '../commands/osCommands/os--architecture.js';
-import { canculateHash } from '../commands/hashCommand/canculateHash.js';
+import { canculateHash } from '../commands/hashCommands/canculateHash.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,

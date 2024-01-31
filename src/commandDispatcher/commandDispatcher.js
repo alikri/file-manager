@@ -6,6 +6,7 @@ import { printFileContent } from '../commands/basicCommands/cat.js';
 import { renameFile } from '../commands/basicCommands/rn.js';
 import { copyFile } from '../commands/basicCommands/cp.js';
 import { moveFile } from '../commands/basicCommands/mv.js';
+import { deleteFile } from '../commands/basicCommands/rm.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -32,6 +33,7 @@ export const commandDispatcher = {
     await printFileContent(fileName);
   },
   add: async (payload) => {
+    validateOneArgCommand(payload);
     const fileName = payload[0];
     await createFile(fileName);
   },
@@ -55,7 +57,9 @@ export const commandDispatcher = {
     await moveFile(sourceFilePath, destinationDir);
   },
   rm: async (payload) => {
-    console.log(`Removing file: ${payload[0]}`);
+    validateOneArgCommand(payload);
+    const fileName = payload[0];
+    await deleteFile(fileName);
   },
   hash: async (payload) => {
     console.log(`Calculating hash for file: ${payload[0]}`);

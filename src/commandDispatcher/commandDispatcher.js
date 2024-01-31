@@ -12,6 +12,7 @@ import { printCPUs } from '../commands/osCommands/os--cpus.js';
 import { printDirectory } from '../commands/osCommands/os --homedir.js';
 import { printSystemUsername } from '../commands/osCommands/os--username.js';
 import { printCPUArchitecture } from '../commands/osCommands/os--architecture.js';
+import { canculateHash } from '../commands/hashCommand/canculateHash.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -66,7 +67,9 @@ export const commandDispatcher = {
     await deleteFile(fileName);
   },
   hash: async (payload) => {
-    console.log(`Calculating hash for file: ${payload[0]}`);
+    validateOneArgCommand(payload);
+    const filePath = payload[0];
+    await canculateHash(filePath);
   },
   compress: async (payload) => {
     console.log(`Compressing file from ${payload[0]} to ${payload[1]}`);

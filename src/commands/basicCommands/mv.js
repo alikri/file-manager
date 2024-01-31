@@ -2,7 +2,6 @@ import { access, constants, unlink } from 'node:fs/promises';
 import { pipeline } from 'node:stream/promises';
 import { createReadStream, createWriteStream } from 'node:fs';
 import { join, basename, isAbsolute } from 'node:path';
-
 import { getCurrentDirectory } from '../../utils/getCurrentDir.js';
 
 export const moveFile = async (sourceFilePath, destinationDir) => {
@@ -32,7 +31,7 @@ export const moveFile = async (sourceFilePath, destinationDir) => {
   } catch (err) {
     if (err.code === 'ENOENT') {
       throw new Error(
-        `Operation failed: only relative or absolute path accepted`
+        `Operation failed: file does not exist`
       );
     } else {
       throw new Error(`Operation failed: ${err.message}`);

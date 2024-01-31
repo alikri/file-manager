@@ -11,6 +11,7 @@ import { printEOL } from '../commands/osCommands/os--EOL.js';
 import { printCPUs } from '../commands/osCommands/os--cpus.js';
 import { printDirectory } from '../commands/osCommands/os --homedir.js';
 import { printSystemUsername } from '../commands/osCommands/os--username.js';
+import { printCPUArchitecture } from '../commands/osCommands/os--architecture.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -91,7 +92,7 @@ export const commandDispatcher = {
           printSystemUsername();
           break;
         case '--architecture':
-          console.log('ggg');
+          printCPUArchitecture();
           break;
         default:
           throw new Error('Invalid input: invalid or missing flag');

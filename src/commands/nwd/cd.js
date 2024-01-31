@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import os from 'os';
 import path from 'path';
-import { setCurrentDirectory, getCurrentDirectory } from '../../config.js';
+import { setCurrentDirectory, getCurrentDirectory } from '../../utils/getCurrentDir.js';
 
 
 export const changeDirectory = async (newDir) => {

@@ -1,7 +1,7 @@
 import { createReadStream } from 'node:fs';
 import { join } from 'node:path';
 
-import { getCurrentDirectory } from '../../config.js';
+import { getCurrentDirectory } from '../../utils/getCurrentDir.js';
 
 export const printFileContent = async (fileName) => {
   const filePath = join(getCurrentDirectory(), fileName);

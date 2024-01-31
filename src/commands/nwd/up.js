@@ -1,6 +1,6 @@
 import os from 'os';
 import path from 'path';
-import { setCurrentDirectory, getCurrentDirectory } from '../../config.js';
+import { setCurrentDirectory, getCurrentDirectory } from '../../utils/getCurrentDir.js';
 
 export const navigateUp = async () => {
   const parentDir = path.resolve(getCurrentDirectory(), '..');

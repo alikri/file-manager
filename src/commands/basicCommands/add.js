@@ -15,7 +15,7 @@ export const createFile = async (fileName) => {
       await writeFile(filePath, '');
       console.log(`File successfully created at ${filePath}`);
     } catch (err) {
-      console.log(`Operation failed! Error in addFile(): ${err}`);
+      throw new Error(`Operation failed!: ${err}`);
     }
   }
 };

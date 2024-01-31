@@ -30,13 +30,8 @@ export const commandDispatcher = {
     await printFileContent(fileName);
   },
   add: async (payload) => {
-    try {
-      const fileName = payload[0];
-      await createFile(fileName);
-    } catch (err) {
-      console.log(`Operation failed! Error in handler: ${err.message}`)
-    }
-  
+    const fileName = payload[0];
+    await createFile(fileName);
   },
   rn: async (payload) => {
     validateTwoArgsCommand(payload);

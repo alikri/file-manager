@@ -7,6 +7,7 @@ import { renameFile } from '../commands/basicCommands/rn.js';
 import { copyFile } from '../commands/basicCommands/cp.js';
 import { moveFile } from '../commands/basicCommands/mv.js';
 import { deleteFile } from '../commands/basicCommands/rm.js';
+import { printEOL } from '../commands/osCommands/os--EOL.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -74,7 +75,7 @@ export const commandDispatcher = {
     let output;
     switch (payload[0]) {
       case '--EOL':
-        output = `--EOL`;
+        output = printEOL();
         break;
       case '--cpus':
         output = '--cpus';
@@ -89,7 +90,7 @@ export const commandDispatcher = {
         output = '--architecture';
         break;
       default:
-        throw new Error('Invalid input: invalid flag')
+        throw new Error('Invalid input: invalid or missing flag')
     }
 
     console.log(output);

@@ -1,8 +1,8 @@
 import { changeDirectory } from '../commands/nwd/cd.js';
 import { listDirectoryContent } from '../commands/nwd/ls.js';
 import { navigateUp } from '../commands/nwd/up.js';
-import { createFile } from '../commands/basicOperations/add.js';
-import { printFileContent } from '../commands/basicOperations/cat.js';
+import { createFile } from '../commands/basicCommands/add.js';
+import { printFileContent } from '../commands/basicCommands/cat.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,

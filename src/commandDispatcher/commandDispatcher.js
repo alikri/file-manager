@@ -4,6 +4,7 @@ import { navigateUp } from '../commands/nwd/up.js';
 import { createFile } from '../commands/basicCommands/add.js';
 import { printFileContent } from '../commands/basicCommands/cat.js';
 import { renameFile } from '../commands/basicCommands/rn.js';
+import { copyFile } from '../commands/basicCommands/cp.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -41,7 +42,10 @@ export const commandDispatcher = {
 
   },
   cp: async (payload) => {
-    console.log(`Copying file from ${payload[0]} to ${payload[1]}`);
+    validateTwoArgsCommand(payload);
+    const sourceFilePath = payload[0];
+    const destinationDir = payload[1];
+    await copyFile(sourceFilePath, destinationDir);
   },
   mv: async (payload) => {
     console.log(`Moving file from ${payload[0]} to ${payload[1]}`);

@@ -8,6 +8,7 @@ import { copyFile } from '../commands/basicCommands/cp.js';
 import { moveFile } from '../commands/basicCommands/mv.js';
 import { deleteFile } from '../commands/basicCommands/rm.js';
 import { printEOL } from '../commands/osCommands/os--EOL.js';
+import { printCPUs } from '../commands/osCommands/os--cpus.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -75,10 +76,10 @@ export const commandDispatcher = {
     let output;
     switch (payload[0]) {
       case '--EOL':
-        output = printEOL();
+        printEOL();
         break;
       case '--cpus':
-        output = '--cpus';
+        printCPUs();
         break;
       case '--homedir':
         output = '--homedir';

@@ -26,11 +26,12 @@ export const compressFile = async (sourceFilePath, destinationFilePath) => {
     console.log(
       `\n---\nCompressed successfully ${basename(
         fullSourceFilePath
-      )} to ${fullDestinationFilePath}\n---\n`
+      )} to ${basename(
+        fullDestinationFilePath)}\n---\n`
     );
 
     await unlink(fullSourceFilePath);
-    
+
   } catch (err) {
     throw new Error(`Operation failed: ${err.message}`)
   }

@@ -13,6 +13,7 @@ import { printDirectory } from '../commands/osCommands/os --homedir.js';
 import { printSystemUsername } from '../commands/osCommands/os--username.js';
 import { printCPUArchitecture } from '../commands/osCommands/os--architecture.js';
 import { canculateHash } from '../commands/hashCommands/canculateHash.js';
+import { compressFile } from '../commands/codecCommands/compress.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -72,7 +73,10 @@ export const commandDispatcher = {
     await canculateHash(filePath);
   },
   compress: async (payload) => {
-    console.log(`Compressing file from ${payload[0]} to ${payload[1]}`);
+    validateTwoArgsCommand(payload);
+    const sourceFilePath = payload[0];
+    const destinationFilePath = payload[1];
+    await compressFile(sourceFilePath, destinationFilePath)
   },
   decompress: async (payload) => {
     console.log(`Decompressing file from ${payload[0]} to ${payload[1]}`);

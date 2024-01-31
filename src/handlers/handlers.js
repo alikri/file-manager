@@ -1,7 +1,7 @@
-import { changeDirectory } from '../commands/nwd/cd.js';
+import { changeDirectory } from '../commands/nwd/cd/cd.js';
 import { validatePayload } from '../utils/validatePayload.js';
-import { listDirectoryContent } from '../commands/nwd/ls.js';
-import { navigateUp } from '../commands/nwd/up.js';
+import { listDirectoryContent } from '../commands/nwd/noArgCommands/ls.js';
+import { navigateUp } from '../commands/nwd/noArgCommands/up.js';
 import { createFile } from '../commands/basicOperations/add.js';
 import { printFileContent } from '../commands/basicOperations/cat.js';
 

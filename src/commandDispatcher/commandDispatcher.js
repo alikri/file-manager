@@ -1,29 +1,31 @@
-import { changeDirectory } from '../commands/nwd/cd/cd.js';
-import { validatePayload } from '../utils/validatePayload.js';
-import { listDirectoryContent } from '../commands/nwd/noArgCommands/ls.js';
-import { navigateUp } from '../commands/nwd/noArgCommands/up.js';
+import { changeDirectory } from '../commands/nwd/cd.js';
+import { listDirectoryContent } from '../commands/nwd/ls.js';
+import { navigateUp } from '../commands/nwd/up.js';
 import { createFile } from '../commands/basicOperations/add.js';
 import { printFileContent } from '../commands/basicOperations/cat.js';
+import {
+  validateNoArgsCommand,
+  validateOneArgCommand,
+} from '../commandOperations/validateCommand.js';
 
-export const handlers = {
-  up: async () => {
+export const commandDispatcher = {
+  up: async (payload) => {
+    validateNoArgsCommand(payload);
     await navigateUp();
   },
-  ls: async () => {
+  ls: async (payload) => {
+    validateNoArgsCommand(payload)
     await listDirectoryContent();
   },
   cd: async (payload) => {
-    validatePayload(payload);
+    validateOneArgCommand(payload);
     const directory = payload[0];
     await changeDirectory(directory);
   },
   cat: async (payload) => {
-    try {
-      const fileName = payload[0];
-      await printFileContent(fileName);
-    } catch (err) {
-      console.log(`Operation failed! Error in handler: ${err.message}`);
-    }
+    validateOneArgCommand(payload);
+    const fileName = payload[0];
+    await printFileContent(fileName);
   },
   add: async (payload) => {
     try {

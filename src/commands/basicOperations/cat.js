@@ -13,8 +13,7 @@ export const printFileContent = async (fileName) => {
     });
 
     readableStream.on('error', (err) => {
-      console.log(`Operation failed! Error in print(): ${err}`);
-      reject(err); 
+      reject(new Error(`Operation failed: ${err.message}`));
     });
 
     readableStream.on('end', () => {

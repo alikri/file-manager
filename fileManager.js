@@ -1,7 +1,7 @@
 import readline from 'readline';
 import { parseUsername } from './src/utils/parseUsername.js';
 import { getCurrentDirectory } from './src/config.js';
-import { handleCommandInput } from './src/handlers/handleCommandInput.js';
+import { handleCommand } from './src/commandOperations/handleCommand.js';
 
 const readLine = readline.createInterface({
   input: process.stdin,
@@ -23,7 +23,7 @@ const commandLineLoop = () => {
       console.log(`Thank you for using File Manager, ${username}, goodbye!`);
       readLine.close();
     } else {
-      await handleCommandInput(input);
+      await handleCommand(input);
       commandLineLoop();
     }
   });

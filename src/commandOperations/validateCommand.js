@@ -9,3 +9,10 @@ export const validateOneArgCommand = (payload) => {
     throw new Error('Invalid input!');
   }
 };
+
+
+export const validateTwoArgsCommand = (payload) => {
+  if (payload.length !== 2) {
+    throw new Error('Invalid input!');
+  }
+};

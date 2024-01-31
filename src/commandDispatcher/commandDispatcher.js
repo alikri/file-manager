@@ -3,9 +3,11 @@ import { listDirectoryContent } from '../commands/nwd/ls.js';
 import { navigateUp } from '../commands/nwd/up.js';
 import { createFile } from '../commands/basicCommands/add.js';
 import { printFileContent } from '../commands/basicCommands/cat.js';
+import { renameFile } from '../commands/basicCommands/rn.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
+  validateTwoArgsCommand,
 } from '../commandOperations/validateCommand.js';
 
 export const commandDispatcher = {
@@ -37,7 +39,11 @@ export const commandDispatcher = {
   
   },
   rn: async (payload) => {
-    console.log(`Renaming file from ${payload[0]} to ${payload[1]}`);
+    validateTwoArgsCommand(payload);
+    const pathToFile = payload[0];
+    const newFileName = payload[1];
+    await renameFile(pathToFile, newFileName);
+
   },
   cp: async (payload) => {
     console.log(`Copying file from ${payload[0]} to ${payload[1]}`);

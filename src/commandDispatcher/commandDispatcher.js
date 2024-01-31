@@ -5,6 +5,7 @@ import { createFile } from '../commands/basicCommands/add.js';
 import { printFileContent } from '../commands/basicCommands/cat.js';
 import { renameFile } from '../commands/basicCommands/rn.js';
 import { copyFile } from '../commands/basicCommands/cp.js';
+import { moveFile } from '../commands/basicCommands/mv.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -48,7 +49,10 @@ export const commandDispatcher = {
     await copyFile(sourceFilePath, destinationDir);
   },
   mv: async (payload) => {
-    console.log(`Moving file from ${payload[0]} to ${payload[1]}`);
+    validateTwoArgsCommand(payload);
+    const sourceFilePath = payload[0];
+    const destinationDir = payload[1];
+    await moveFile(sourceFilePath, destinationDir);
   },
   rm: async (payload) => {
     console.log(`Removing file: ${payload[0]}`);

@@ -14,12 +14,11 @@ export const copyFile = async (sourceFilePath, destinationDir) => {
   const fullDestinationPath = isAbsolute(destinationDir)
     ? destinationDir
     : join(getCurrentDirectory(), destinationDir);
-  
+
   const fullDestinationFilePath = join(fullDestinationPath, fileName);
 
   try {
     await access(fullSourceFilePath, constants.F_OK);
-    await access(fullDestinationPath, constants.W_OK);
 
     await pipeline(
       createReadStream(fullSourceFilePath),
@@ -28,17 +27,12 @@ export const copyFile = async (sourceFilePath, destinationDir) => {
 
     console.log(`File copied successfully to ${fullDestinationFilePath}`);
   } catch (err) {
-    switch (err.code) {
-      case 'ENOENT':
-        throw new Error(
-          `Operation failed: only relative or absolute path accepted`
-        );
-      case 'EACCES':
-        throw new Error(
-          `Operation failed: Permition denied. Cannot access source file or write to the destination directory.`
-        );
-      default:
-        throw new Error(`Operation failed: ${err.message}`);
+    if (err.code === 'ENOENT') {
+      throw new Error(
+        `Operation failed: only relative or absolute path accepted`
+      );
+    } else {
+      throw new Error(`Operation failed: ${err.message}`);
     }
   }
 };

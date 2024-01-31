@@ -6,7 +6,9 @@ export const listDirectoryContent = async () => {
     const currentDirectory = getCurrentDirectory();
     console.log('Content of the directory:', currentDirectory);
 
-    const directoryContent = await fs.readdir(currentDirectory, { withFileTypes: true });
+    const directoryContent = await fs.readdir(currentDirectory, {
+      withFileTypes: true,
+    });
 
     const tableData = directoryContent
       .map((item) => ({
@@ -15,7 +17,7 @@ export const listDirectoryContent = async () => {
       }))
       .sort((a, b) => {
         if (a.Type === b.Type) return a.Name.localeCompare(b.Name);
-        return a.Type === 'Folder' ? -1 : 1;
+        return a.Type === 'folder' ? -1 : 1;
       });
 
     console.table(tableData);

@@ -9,6 +9,7 @@ import { moveFile } from '../commands/basicCommands/mv.js';
 import { deleteFile } from '../commands/basicCommands/rm.js';
 import { printEOL } from '../commands/osCommands/os--EOL.js';
 import { printCPUs } from '../commands/osCommands/os--cpus.js';
+import { printDirectory } from '../commands/osCommands/os --homedir.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -21,7 +22,7 @@ export const commandDispatcher = {
     await navigateUp();
   },
   ls: async (payload) => {
-    validateNoArgsCommand(payload)
+    validateNoArgsCommand(payload);
     await listDirectoryContent();
   },
   cd: async (payload) => {
@@ -44,7 +45,6 @@ export const commandDispatcher = {
     const pathToFile = payload[0];
     const newFileName = payload[1];
     await renameFile(pathToFile, newFileName);
-
   },
   cp: async (payload) => {
     validateTwoArgsCommand(payload);
@@ -73,27 +73,30 @@ export const commandDispatcher = {
     console.log(`Decompressing file from ${payload[0]} to ${payload[1]}`);
   },
   os: async (payload) => {
-    let output;
-    switch (payload[0]) {
-      case '--EOL':
-        printEOL();
-        break;
-      case '--cpus':
-        printCPUs();
-        break;
-      case '--homedir':
-        output = '--homedir';
-        break;
-      case '--username':
-        output = '--username';
-        break;
-      case '--architecture':
-        output = '--architecture';
-        break;
-      default:
-        throw new Error('Invalid input: invalid or missing flag')
-    }
+    try {
+      validateOneArgCommand(payload);
 
-    console.log(output);
-  }
+      switch (payload[0]) {
+        case '--EOL':
+          printEOL();
+          break;
+        case '--cpus':
+          printCPUs();
+          break;
+        case '--homedir':
+          printDirectory();
+          break;
+        case '--username':
+          console.log('ggg');
+          break;
+        case '--architecture':
+          console.log('ggg');
+          break;
+        default:
+          throw new Error('Invalid input: invalid or missing flag');
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  },
 };

@@ -13,11 +13,11 @@ export const listDirectoryContent = async () => {
     const tableData = directoryContent
       .map((item) => ({
         Name: item.name,
-        Type: item.isDirectory() ? 'folder' : 'file',
+        Type: item.isDirectory() ? 'directory' : 'file',
       }))
       .sort((a, b) => {
         if (a.Type === b.Type) return a.Name.localeCompare(b.Name);
-        return a.Type === 'folder' ? -1 : 1;
+        return a.Type === 'directory' ? -1 : 1;
       });
 
     console.table(tableData);

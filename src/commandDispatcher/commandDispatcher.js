@@ -10,6 +10,7 @@ import { deleteFile } from '../commands/basicCommands/rm.js';
 import { printEOL } from '../commands/osCommands/os--EOL.js';
 import { printCPUs } from '../commands/osCommands/os--cpus.js';
 import { printDirectory } from '../commands/osCommands/os --homedir.js';
+import { printSystemUsername } from '../commands/osCommands/os--username.js';
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -87,7 +88,7 @@ export const commandDispatcher = {
           printDirectory();
           break;
         case '--username':
-          console.log('ggg');
+          printSystemUsername();
           break;
         case '--architecture':
           console.log('ggg');

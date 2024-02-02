@@ -33,6 +33,6 @@ export const compressFile = async (sourceFilePath, destinationFilePath) => {
     await unlink(fullSourceFilePath);
 
   } catch (err) {
-    throw new Error(`Operation failed: ${err.message}`)
+    throw new Error(`\n\n!! Operation failed: ${err.message}\n`)
   }
 };

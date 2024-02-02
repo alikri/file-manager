@@ -1,20 +1,26 @@
-import { changeDirectory } from '../commands/nwdCommands/cd.js';
-import { listDirectoryContent } from '../commands/nwdCommands/ls.js';
-import { navigateUp } from '../commands/nwdCommands/up.js';
-import { createFile } from '../commands/basicCommands/add.js';
-import { printFileContent } from '../commands/basicCommands/cat.js';
-import { renameFile } from '../commands/basicCommands/rn.js';
-import { copyFile } from '../commands/basicCommands/cp.js';
-import { moveFile } from '../commands/basicCommands/mv.js';
-import { deleteFile } from '../commands/basicCommands/rm.js';
-import { printEOL } from '../commands/osCommands/os--EOL.js';
-import { printCPUs } from '../commands/osCommands/os--cpus.js';
-import { printDirectory } from '../commands/osCommands/os --homedir.js';
-import { printSystemUsername } from '../commands/osCommands/os--username.js';
-import { printCPUArchitecture } from '../commands/osCommands/os--architecture.js';
-import { canculateHash } from '../commands/hashCommands/canculateHash.js';
-import { compressFile } from '../commands/codecCommands/compress.js';
-import { decompressFile } from '../commands/codecCommands/decompress.js';
+import {
+  changeDirectory,
+  listDirectoryContent,
+  navigateUp,
+} from '../commands/nwdCommands/index.js';
+import {
+  createFile,
+  printFileContent,
+  renameFile,
+  copyFile,
+  moveFile,
+  deleteFile,
+} from '../commands/basicCommands/index.js';
+import {
+  printEOL,
+  printCPUs,
+  printDirectory,
+  printSystemUsername,
+  printCPUArchitecture,
+} from '../commands/osCommands/index.js';
+import { canculateHash } from '../commands/hashCommands/index.js';
+import { compressFile, decompressFile } from '../commands/codecCommands/index.js';
+
 import {
   validateNoArgsCommand,
   validateOneArgCommand,
@@ -77,13 +83,13 @@ export const commandDispatcher = {
     validateTwoArgsCommand(payload);
     const sourceFilePath = payload[0];
     const destinationFilePath = payload[1];
-    await compressFile(sourceFilePath, destinationFilePath)
+    await compressFile(sourceFilePath, destinationFilePath);
   },
   decompress: async (payload) => {
-      validateTwoArgsCommand(payload);
-      const sourceFilePath = payload[0];
-      const destinationFilePath = payload[1];
-      await decompressFile(sourceFilePath, destinationFilePath);
+    validateTwoArgsCommand(payload);
+    const sourceFilePath = payload[0];
+    const destinationFilePath = payload[1];
+    await decompressFile(sourceFilePath, destinationFilePath);
   },
   os: async (payload) => {
     try {

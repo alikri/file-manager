@@ -14,5 +14,5 @@ export const navigateUp = async () => {
   }
 
   setCurrentDirectory(parentDir);
-  console.log(`Directory changed to ${parentDir}`);
+  console.log(`\n\nDirectory changed to ${parentDir}\n`);
 };

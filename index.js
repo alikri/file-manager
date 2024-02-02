@@ -20,7 +20,9 @@ const commandLineLoop = () => {
   displayCurrentDirectory(); 
   readLine.question('Enter command: ', async (input) => {
     if (input === EXIT) {
-      console.log(`Thank you for using File Manager, ${username}, goodbye!`);
+      console.log(
+        `\n---\nThank you for using File Manager, ${username}, goodbye!\n---\n`
+      );
       readLine.close();
     } else {
       await handleCommand(input);
@@ -30,10 +32,10 @@ const commandLineLoop = () => {
 };
 
 
-console.log(`Welcome to the File Manager, ${username}!`);
+console.log(`Welcome to the File Manager, ${username}!\n`);
 commandLineLoop();
 
 readLine.on('SIGINT', () => {
-  console.log(`\nThank you for using File Manager, ${username}, goodbye!`);
+  console.log(`\n---\n Thank you for using File Manager, ${username}, goodbye!\n---\n`);
   readLine.close();
 });

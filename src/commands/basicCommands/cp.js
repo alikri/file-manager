@@ -29,7 +29,7 @@ export const copyFile = async (sourceFilePath, destinationDir) => {
   } catch (err) {
     if (err.code === 'ENOENT') {
       throw new Error(
-        `Operation failed: only relative or absolute path accepted`
+        `Operation failed: double check file name or destination directory`
       );
     } else {
       throw new Error(`Operation failed: ${err.message}`);

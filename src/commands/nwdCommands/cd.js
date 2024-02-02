@@ -13,16 +13,16 @@ export const changeDirectory = async (newDir) => {
   });
 
   if (!dirStats.isDirectory()) {
-    throw new Error(`Invalid input: ${newDir} is not a directory`);
+    throw new Error(`\n\n!! Invalid input: ${newDir} is not a directory\n\n`);
   }
 
   if (
     relativeToRoot.startsWith('..') ||
     (path.isAbsolute(newDir) && !newAbsolutePath.startsWith(os.homedir()))
   ) {
-    throw new Error('Cannot navigate above the root directory');
+    throw new Error('\n\n!! Cannot navigate above the root directory\n\n');
   }
 
   setCurrentDirectory(newAbsolutePath);
-  console.log(`Directory changed to ${newAbsolutePath}`);
+  console.log(`\nDirectory changed to ${newAbsolutePath}\n`);
 };

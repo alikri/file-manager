@@ -18,6 +18,6 @@ export const canculateHash = async (filePath) => {
     console.log(`\n---\n${fileHash} - hash for ${filePath}\n---\n`);
 
   } catch (err) {
-    throw new Error(`Operation failed: ${err.message}`);
+    throw new Error(`\n\n!! Operation failed: ${err.message}\n`);
   }
 };

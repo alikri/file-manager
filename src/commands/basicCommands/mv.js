@@ -32,7 +32,9 @@ export const moveFile = async (sourceFilePath, destinationDir) => {
 
   } catch (err) {
     if (err.code === 'ENOENT') {
-      throw new Error(`\n\n!! Operation failed: file or folder does not exist\n\n`);
+      throw new Error(
+        `\n\n!! Operation failed: no such file or directory!\n\n`
+      );
     } else {
       throw new Error(`\n\n!! Operation failed: ${err.message}\n\n`);
     }

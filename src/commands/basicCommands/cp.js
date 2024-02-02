@@ -31,7 +31,7 @@ export const copyFile = async (sourceFilePath, destinationDir) => {
   } catch (err) {
     if (err.code === 'ENOENT') {
       throw new Error(
-        `\n\n!! Operation failed: double check file name or destination directory\n\n`
+        `\n\n!! Operation failed: no such file or directory!\n\n`
       );
     } else {
       throw new Error(`Operation failed: ${err.message}`);

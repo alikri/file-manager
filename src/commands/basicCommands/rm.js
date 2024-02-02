@@ -14,7 +14,9 @@ export const deleteFile = async (fileName) => {
     if (err.code === 'ENOENT') {
       throw new Error(`\n\n!! Operation failed: file does not exist\n\n`);
     } else {
-      throw new Error(`\n\n!! Operation failed: ${err.message}\n\n`);
+      throw new Error(
+        `\n\n!! Operation failed: no such file or directory!\n\n`
+      );
     }
   }
 };

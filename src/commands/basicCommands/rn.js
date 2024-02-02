@@ -12,6 +12,8 @@ export const renameFile = async (pathToFile, newFileName) => {
     console.log('\n---\nFile renamed!\n---\n');
     
   } catch (err) {
-    throw new Error(`\n\n!! Operation Failed: ${err}\n\n`);
+    throw new Error(
+      `\n\n!! Operation Failed: no such file or directory!\n\n`
+    );
   }
 };

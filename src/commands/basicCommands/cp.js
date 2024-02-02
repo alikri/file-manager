@@ -25,11 +25,13 @@ export const copyFile = async (sourceFilePath, destinationDir) => {
       createWriteStream(fullDestinationFilePath)
     );
 
-    console.log(`File copied successfully to ${fullDestinationFilePath}`);
+    console.log(
+      `\n---\nFile copied successfully to ${fullDestinationFilePath}\n---\n`
+    );
   } catch (err) {
     if (err.code === 'ENOENT') {
       throw new Error(
-        `Operation failed: double check file name or destination directory`
+        `\n\n!! Operation failed: double check file name or destination directory\n\n`
       );
     } else {
       throw new Error(`Operation failed: ${err.message}`);

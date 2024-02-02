@@ -8,15 +8,13 @@ export const deleteFile = async (fileName) => {
   try {
     await access(filePath, constants.F_OK);
     await unlink(filePath);
-    console.log(`File ${fileName} successfully deleted`);
+    console.log(`\n---\nFile ${fileName} successfully deleted\n---\n`);
     
   } catch (err) {
     if (err.code === 'ENOENT') {
-      throw new Error(
-        `Operation failed: file does not exist`
-      );
+      throw new Error(`\n\n!! Operation failed: file does not exist\n\n`);
     } else {
-      throw new Error(`Operation failed: ${err.message}`);
+      throw new Error(`\n\n!! Operation failed: ${err.message}\n\n`);
     }
   }
 };

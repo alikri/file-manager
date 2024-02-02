@@ -5,6 +5,6 @@ export const executeCommand = async (commandObj) => {
   if (dispatcher) {
     await dispatcher(commandObj.payload);
   } else {
-    console.log('Ivalid input! No such command');
+    console.log('\n\n!! Ivalid input! No such command\n');
   }
 };

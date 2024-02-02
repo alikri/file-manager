@@ -8,14 +8,14 @@ export const createFile = async (fileName) => {
   try {
     await access(filePath);
     console.log(
-      `File with the name "${fileName}" already exists, try another name ${currentDirectory}`
+      `\n\n!! File with the name "${fileName}" already exists, try another name ${currentDirectory}\n\n`
     );
   } catch {
     try {
       await writeFile(filePath, '');
-      console.log(`File successfully created at ${filePath}`);
+      console.log(`\n---\nFile successfully created at ${filePath}\n---\n`);
     } catch (err) {
-      throw new Error(`Operation failed!: ${err}`);
+      throw new Error(`\n\n!! Operation failed!: ${err}\n\n`);
     }
   }
 };

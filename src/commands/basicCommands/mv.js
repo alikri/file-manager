@@ -26,15 +26,15 @@ export const moveFile = async (sourceFilePath, destinationDir) => {
 
     await unlink(fullSourceFilePath);
 
-    console.log(`File moved successfully to ${fullDestinationFilePath}`);
+    console.log(
+      `\n---\nFile moved successfully to ${fullDestinationFilePath}\n---\n`
+    );
 
   } catch (err) {
     if (err.code === 'ENOENT') {
-      throw new Error(
-        `Operation failed: file does not exist`
-      );
+      throw new Error(`\n\n!! Operation failed: file or folder does not exist\n\n`);
     } else {
-      throw new Error(`Operation failed: ${err.message}`);
+      throw new Error(`\n\n!! Operation failed: ${err.message}\n\n`);
     }
   }
 };

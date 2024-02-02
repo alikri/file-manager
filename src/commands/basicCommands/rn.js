@@ -9,9 +9,9 @@ export const renameFile = async (pathToFile, newFileName) => {
 
   try {
     await rename(fullOldPath, fullNewPath);
-    console.log('File renamed!');
+    console.log('\n---\nFile renamed!\n---\n');
     
   } catch (err) {
-    throw new Error(`Operation Failed: ${err}`);
+    throw new Error(`\n\n!! Operation Failed: ${err}\n\n`);
   }
 };

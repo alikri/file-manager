@@ -10,9 +10,8 @@ export const navigateUp = async () => {
     relativeToRoot.startsWith('..') ||
     (path.isAbsolute(parentDir) && !parentDir.startsWith(os.homedir()))
   ) {
-    throw new Error('\n\n!! Cannot navigate above the root directory\n');
+    throw new Error('Cannot navigate above the root directory');
   }
 
   setCurrentDirectory(parentDir);
-  console.log(`\n\nDirectory changed to ${parentDir}\n`);
 };

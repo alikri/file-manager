@@ -4,7 +4,6 @@ import { getCurrentDirectory } from '../../utils/getCurrentDir.js';
 export const listDirectoryContent = async () => {
   try {
     const currentDirectory = getCurrentDirectory();
-    console.log('\nContent of the directory:', currentDirectory);
 
     const directoryContent = await fs.readdir(currentDirectory, {
       withFileTypes: true,
@@ -22,6 +21,6 @@ export const listDirectoryContent = async () => {
 
     console.table(tableData);
   } catch (error) {
-    console.log(`\n\n!! Failed to list directory content: ${error}\n`);
+    console.log(`Failed to list directory content: ${error}`);
   }
 };

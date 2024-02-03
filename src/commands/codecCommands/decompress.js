@@ -2,7 +2,7 @@ import { createReadStream, createWriteStream } from 'fs';
 import { createBrotliDecompress } from 'zlib';
 import { pipeline } from 'stream/promises';
 import { unlink } from 'fs/promises';
-import { basename, join, isAbsolute } from 'path';
+import { join, isAbsolute } from 'path';
 
 import { getCurrentDirectory } from '../../utils/getCurrentDir.js';
 
@@ -22,15 +22,8 @@ export const decompressFile = async (sourceFilePath, destinationFilePath) => {
       createWriteStream(fullDestinationFilePath)
     );
 
-    console.log(
-      `\n---\nDecompressed successfully ${basename(
-        fullSourceFilePath
-      )} to ${basename(
-        fullDestinationFilePath)}\n---\n`
-    );
-
     await unlink(fullSourceFilePath);
   } catch (err) {
-    throw new Error(`Operation failed: ${err.message}`);
+    throw new Error(`Operation failed!`);
   }
 };

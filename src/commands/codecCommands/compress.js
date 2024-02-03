@@ -22,17 +22,9 @@ export const compressFile = async (sourceFilePath, destinationFilePath) => {
       createBrotliCompress(),
       createWriteStream(fullDestinationFilePath)
     );
-    
-    console.log(
-      `\n---\nCompressed successfully ${basename(
-        fullSourceFilePath
-      )} to ${basename(
-        fullDestinationFilePath)}\n---\n`
-    );
-
     await unlink(fullSourceFilePath);
 
   } catch (err) {
-    throw new Error(`\n\n!! Operation failed: ${err.message}\n`)
+    throw new Error(`Operation failed!`)
   }
 };

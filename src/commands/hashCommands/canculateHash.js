@@ -15,9 +15,9 @@ export const canculateHash = async (filePath) => {
   try {
     await pipeline(createReadStream(fullFilePath), hash);
     const fileHash = hash.digest('hex');
-    console.log(`\n---\n${fileHash} - hash for ${filePath}\n---\n`);
+    console.log(`${fileHash} - hash for ${filePath}`);
 
   } catch (err) {
-    throw new Error(`\n\n!! Operation failed: ${err.message}\n`);
+    throw new Error(`Operation failed!`);
   }
 };

@@ -2,7 +2,7 @@ import { createReadStream, createWriteStream } from 'fs';
 import { createBrotliCompress } from 'zlib';
 import { pipeline } from 'stream/promises';
 import { unlink } from 'fs/promises';
-import { basename, join, isAbsolute } from 'path';
+import { join, isAbsolute } from 'path';
 
 import { getCurrentDirectory } from '../../utils/getCurrentDir.js';
 

@@ -4,7 +4,7 @@ export const printCPUs = () => {
   const cpus = os.cpus();
   const cpusQuantity = cpus.length;
 
-  console.log(`\n---\n Total CPUs: ${cpusQuantity}\n---`);
+  console.log(`Total CPUs: ${cpusQuantity}`);
 
   const cpuTable = cpus.map((cpu, index) => ({
     'CPU Number': index + 1,

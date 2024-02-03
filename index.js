@@ -18,10 +18,10 @@ const displayCurrentDirectory = () => {
 
 const commandLineLoop = () => {
   displayCurrentDirectory(); 
-  readLine.question('Enter command: ', async (input) => {
+  readLine.question('> ', async (input) => {
     if (input === EXIT) {
       console.log(
-        `\n---\nThank you for using File Manager, ${username}, goodbye!\n---\n`
+        `Thank you for using File Manager, ${username}, goodbye!`
       );
       readLine.close();
     } else {

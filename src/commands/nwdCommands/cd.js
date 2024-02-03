@@ -10,7 +10,7 @@ export const changeDirectory = async (newDir) => {
 
   const dirStats = await fs.stat(newAbsolutePath).catch(() => {
     throw new Error(
-      `Operation failed: specified directory does not exist: ${newDir}`
+      `Operation failed: specified directory does not exist`
     );
   });
 

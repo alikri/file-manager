@@ -112,7 +112,7 @@ export const commandDispatcher = {
           printCPUArchitecture();
           break;
         default:
-          throw new Error('\n\n!! Invalid input: invalid or missing flag\n');
+          throw new Error('Invalid input: invalid or missing flag');
       }
     } catch (err) {
       console.log(err.message);

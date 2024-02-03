@@ -24,17 +24,13 @@ export const copyFile = async (sourceFilePath, destinationDir) => {
       createReadStream(fullSourceFilePath),
       createWriteStream(fullDestinationFilePath)
     );
-
-    console.log(
-      `\n---\nFile copied successfully to ${fullDestinationFilePath}\n---\n`
-    );
   } catch (err) {
     if (err.code === 'ENOENT') {
       throw new Error(
-        `\n\n!! Operation failed: no such file or directory!\n\n`
+        `Operation failed: no such file or directory!`
       );
     } else {
-      throw new Error(`Operation failed: ${err.message}`);
+      throw new Error(`Operation failed!`);
     }
   }
 };

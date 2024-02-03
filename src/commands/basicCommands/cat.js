@@ -9,15 +9,14 @@ export const printFileContent = async (fileName) => {
     const readableStream = createReadStream(filePath, { encoding: 'utf8' });
 
     readableStream.on('data', (chunk) => {
-      console.log(`\n${chunk}`);
+      console.log(`${chunk}`);
     });
 
-    readableStream.on('error', (err) => {
-      reject(new Error(`\n\n!! Operation failed: ${err.message}\n\n`));
+    readableStream.on('error', () => {
+      reject(new Error(`Operation failed!`));
     });
 
     readableStream.on('end', () => {
-      console.log('\n---\nFile has been read.\n---\n');
       resolve();
     });
   });

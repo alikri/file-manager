@@ -9,11 +9,10 @@ export const renameFile = async (pathToFile, newFileName) => {
 
   try {
     await rename(fullOldPath, fullNewPath);
-    console.log('\n---\nFile renamed!\n---\n');
     
   } catch (err) {
     throw new Error(
-      `\n\n!! Operation Failed: no such file or directory!\n\n`
+      `Operation Failed: no such file or directory!`
     );
   }
 };

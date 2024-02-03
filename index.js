@@ -32,10 +32,10 @@ const commandLineLoop = () => {
 };
 
 
-console.log(`Welcome to the File Manager, ${username}!\n`);
+console.log(`Welcome to the File Manager, ${username}!`);
 commandLineLoop();
 
 readLine.on('SIGINT', () => {
-  console.log(`\n---\n Thank you for using File Manager, ${username}, goodbye!\n---\n`);
+  console.log(`Thank you for using File Manager, ${username}, goodbye!`);
   readLine.close();
 });
